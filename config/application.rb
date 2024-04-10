@@ -12,5 +12,6 @@ module SupportTicketSystem
   # Responsibility of coordinating the whole boot process
   class Application < Rails::Application
     config.load_defaults 7.1
+    config.active_record.schema_format = :sql
   end
 end
