@@ -2,6 +2,7 @@
 
 ruby '3.2.2'
 source 'https://rubygems.org'
+gem 'annotate'
 gem 'byebug'
 gem 'pg'
 gem 'puma'
