@@ -11,7 +11,7 @@
 #  subject    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  status_id  :integer(2)
+#  status_id  :integer(2)       default(1)
 #
 class Ticket < ActiveRecord::Base
   module CONST # :nodoc:
