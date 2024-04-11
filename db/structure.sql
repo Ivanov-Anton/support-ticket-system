@@ -58,7 +58,7 @@ CREATE TABLE public.tickets (
     name character varying,
     email character varying,
     content text,
-    status_id smallint,
+    status_id smallint DEFAULT 1,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -121,5 +121,6 @@ ALTER TABLE ONLY public.tickets
 SET search_path TO public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240411143120'),
 ('20240410202030');
 
