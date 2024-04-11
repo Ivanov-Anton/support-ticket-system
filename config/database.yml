@@ -6,3 +6,10 @@ development:
   port: 5412
   schema_search_path: 'public'
   database: support-ticker-system
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 3
+  port: 5412
+  schema_search_path: 'public'
+  database: support-ticker-system-test
