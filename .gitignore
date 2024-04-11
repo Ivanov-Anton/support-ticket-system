@@ -2,3 +2,4 @@
 !/log/.keep
 /tmp/*
 !/tmp/.keep
+.byebug_history
