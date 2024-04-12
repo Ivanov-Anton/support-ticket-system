@@ -28,7 +28,7 @@ class CustomerRequestsController < ApplicationController # :nodoc:
   end
 
   def save_raw_data_to_csv
-    CSV.open('customer_requests.csv', 'a') do |csv|
+    CSV.open(Ticket::ImportFromCsv::CONST::CSV_FILE_NAME, 'a') do |csv|
       csv << [@ticket.name, @ticket.email, @ticket.subject, @ticket.content, Time.now.utc.strftime('%Y-%m-%d %H:%M')]
     end
   end
