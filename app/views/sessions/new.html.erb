@@ -1,0 +1,33 @@
+<div style="color: red;display: flex; justify-content: center">
+  <p style="color: red" class="flash"><%= flash[:error] %></p>
+  <p style="color: green" class="flash"><%= flash[:notice] %></p>
+</div>
+
+
+<%= form_with(model: @session, url: sessions_path, method: :post) do |form| %>
+  <% if @session.errors.any? %>
+    <div style="color: red;display: flex; justify-content: center">
+      <ul>
+        <% @session.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="display: flex; align-items: center; flex-direction: column;">
+    <div>
+      <%= form.label :email %>
+      <%= form.select :email, User.pluck(:email) %>
+    </div>
+    <br>
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+    <br>
+    <div>
+      <%= form.submit 'Sign in' %>
+    </div>
+  </div>
+<% end %>

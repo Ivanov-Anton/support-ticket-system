@@ -12,5 +12,7 @@ gem 'rails', '7.1.3.2'
 gem 'rubocop'
 
 group :development, :test do
+  gem 'capybara'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end
