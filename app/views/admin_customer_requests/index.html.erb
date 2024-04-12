@@ -1,0 +1,35 @@
+<p style="color: green" class="flesh"><%= notice %></p>
+
+<h1>Customer requests</h1>
+
+<div>
+  <% @tickets.each do |ticket| %>
+    <div class="customer_request" id="<%= dom_id ticket %>">
+      <p>
+        <strong>Subject:</strong>
+        <%= ticket.subject %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= ticket.email %>
+      </p>
+
+      <p>
+        <strong>Status:</strong>
+        <%= ticket.decorate.status_name %>
+      </p>
+
+      <p>
+        <strong>Created at:</strong>
+        <%= ticket.created_at %>
+      </p>
+    </div>
+
+    <p>
+      <%= link_to "Show this request", admin_customer_request_url(ticket) %>
+    </p>
+  <% end %>
+</div>
+
+<%= render 'log_out' %>
