@@ -1,0 +1,6 @@
+<%= form_with(url: sessions_path, method: :delete) do |form| %>
+  <div style="position: fixed; top: 10px;right: 10px;">
+    <%= form.label cookies.encrypted[:current_user] %>
+    <%= form.submit 'Log Out' %>
+  </div>
+<% end %>

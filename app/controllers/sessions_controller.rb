@@ -4,7 +4,7 @@ class SessionsController < ApplicationController # :nodoc:
   def new
     if User.find_by(id: cookies.encrypted[:current_user])
       flash[:notice] = 'Session already created!'
-      redirect_to admin_customer_requests_path
+      redirect_to admin_path
     end
 
     @session = User.new
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController # :nodoc:
 
     if @session&.authenticate(session_params.fetch(:password))
       setup_cookies
-      redirect_to admin_customer_requests_path, notice: 'Session was successfully created.'
+      redirect_to admin_path, notice: 'Session was successfully created.'
     else
       @session.errors.add(:base, 'invalid email or password')
       render :new, status: :unprocessable_entity
