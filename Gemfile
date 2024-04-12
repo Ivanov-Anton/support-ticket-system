@@ -3,6 +3,7 @@
 ruby '3.2.2'
 source 'https://rubygems.org'
 gem 'annotate'
+gem 'bcrypt', '~> 3.1.7'
 gem 'byebug'
 gem 'draper'
 gem 'pg'
