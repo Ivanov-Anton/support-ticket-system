@@ -10,3 +10,6 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+
+Style/MutableConstant:
+  Enabled: false
