@@ -29,4 +29,14 @@ class Comment < ActiveRecord::Base
 
   validates :content, :email, :ticket, presence: true
   validates :email, format: { with: CONST::VALID_EMAIL_REGEX, allow_blank: true }
+
+  validate :check_status_of_ticket
+
+  private
+
+  def check_status_of_ticket
+    return if ticket.status_id != Ticket::CONST::NEW_RESOLVED_ID
+
+    errors.add(:base, "You can't create comment for RESOLVER customer request!")
+  end
 end

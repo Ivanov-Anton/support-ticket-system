@@ -33,7 +33,7 @@ class AdminCustomerRequestsController < ApplicationController # :nodoc:
   private
 
   def authenticate!
-    User.find_by!(id: cookies.encrypted[:current_user])
+    User.find_by!(email: cookies.encrypted[:current_user])
   rescue ActiveRecord::RecordNotFound => _e
     flash[:error] = 'Access denied!'
     redirect_to new_session_path

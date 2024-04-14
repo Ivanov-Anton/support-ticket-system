@@ -32,13 +32,49 @@
   </p>
 </div>
 
-<div>
+<div class="mb-4">
   <%= link_to "Back to list of requests", admin_path, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4 block' %>
 
   <%= button_to "Destroy", admin_customer_request_url(@ticket), method: :delete, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4' %>
   <%= button_to "Move to #{@ticket.decorate.next_status_name} status", admin_customer_request_path(@ticket), method: :patch, params: { customer_request: { status_id: @ticket.decorate.next_status_id } }, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4' %>
 </div>
 
+<span class="text-gray-300 font-bold mb-4 block"><%= 'Comments' %></span>
 
+<% form_for Comment.new, url: admin_comments_path do |form| %>
+  <div class="mb-4">
+    <%= form.label :email, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.text_field :email, class: "rounded w-full bg-gray-800 text-white" %>
+  </div>
+  <div>
+    <%= form.submit 'Create comment', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 w-full rounded" %>
+  </div>
+<% end %>
+
+<%= form_with(model: Comment.new, url: admin_comments_path, class: "w-full max-w-lg") do |form| %>
+  <div class="mb-4">
+    <%= form.text_area :content, class: "rounded bg-gray-800 text-white w-full", placeholder: 'type here your comment' %>
+    <%= form.hidden_field :email, value: cookies.encrypted[:current_user] %>
+    <%= form.hidden_field :ticket_id, value: @ticket.id %>
+    <%= form.submit 'Post', class: " block w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded" %>
+  </div>
+<% end %>
+<div class="mb-4 list-of-comments text-gray-300 py-2 rounded">
+  <% @ticket.comments.each do |comment| %>
+    <div>
+      <%= gravatar_tag comment.email, :size => 30 %>
+      <strong class="mx-8">Email</strong>
+      <span><%= comment.email %></span>
+    </div>
+
+    <div>
+      <strong>Content</strong>
+      <span class="w-24 min-w-full hover:min-w-0 overflow-x-auto"><%= comment.content %></span>
+    </div>
+
+    <%= button_to "Delete comment", admin_comment_path(comment), method: :delete, class: 'rounded bg-blue-500 text-white hover:bg-blue-700 w-full mb-2' %>
+    <hr>
+  <% end %>
+</div>
 
 <%= render 'log_out' %>
