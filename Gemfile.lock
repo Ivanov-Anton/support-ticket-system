@@ -283,7 +283,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  bcrypt (~> 3.1.7)
+  bcrypt
   byebug
   capybara
   draper
