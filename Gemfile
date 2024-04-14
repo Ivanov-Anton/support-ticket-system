@@ -6,20 +6,17 @@ gem 'annotate'
 gem 'bcrypt', '~> 3.1.7'
 gem 'byebug'
 gem 'draper'
+gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'rails', '7.1.3.2'
 gem 'rubocop'
+gem 'select2-rails'
 gem 'sprockets-rails'
+gem 'tailwindcss-rails'
 
 group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
-
-gem "tailwindcss-rails", "~> 2.4"
-
-gem "select2-rails"
-
-gem "jquery-rails"

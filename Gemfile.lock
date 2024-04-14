@@ -296,7 +296,7 @@ DEPENDENCIES
   select2-rails
   selenium-webdriver
   sprockets-rails
-  tailwindcss-rails (~> 2.4)
+  tailwindcss-rails
 
 RUBY VERSION
    ruby 3.2.2p53
