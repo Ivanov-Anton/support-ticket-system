@@ -59,7 +59,8 @@ RSpec.describe 'Admin Customer Requests' do
     end
 
     it 'should create comment' do
-      expect { subject }.to change(Comment, :count).by(1)
+      expect { subject }.to change(Comment, :count).by(0)
+      expect(page).to have_selector class: 'flash', exact_text: "Email can't be blank"
     end
   end
 end
