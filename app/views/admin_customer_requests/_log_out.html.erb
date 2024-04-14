@@ -1,6 +1,6 @@
 <%= form_with(url: sessions_path, method: :delete) do |form| %>
   <div style="position: fixed; top: 10px;right: 10px;">
-    <%= form.label cookies.encrypted[:current_user] %>
-    <%= form.submit 'Log Out' %>
+    <%= form.label User.find(cookies.encrypted[:current_user]).email, class: 'font-bold text-white' %>
+    <%= form.submit 'Log Out', class: 'rounded bg-blue-500 text-white hover:bg-blue-700 py-2 px-5' %>
   </div>
 <% end %>

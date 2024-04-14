@@ -10,9 +10,16 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '7.1.3.2'
 gem 'rubocop'
+gem 'sprockets-rails'
 
 group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
+
+gem "tailwindcss-rails", "~> 2.4"
+
+gem "select2-rails"
+
+gem "jquery-rails"

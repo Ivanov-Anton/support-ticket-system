@@ -13,5 +13,10 @@ module SupportTicketSystem
   class Application < Rails::Application
     config.load_defaults 7.1
     config.active_record.schema_format = :sql
+
+    # config.assets.debug = true
+    # config.assets.compress = false
+    # config.assets.quiet = true
+    # config.assets.raise_runtime_errors = true
   end
 end
