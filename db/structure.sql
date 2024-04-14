@@ -231,6 +231,7 @@ ALTER TABLE ONLY public.comments
 SET search_path TO public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240414203456'),
 ('20240414172405'),
 ('20240412121112'),
 ('20240411143120'),

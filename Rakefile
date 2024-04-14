@@ -29,3 +29,14 @@ rescue Ticket::ImportFromCsv::Error => e
 ensure
   print_text 'Done.'
 end
+
+desc 'Creates default user that can manager all customer requests (admin@example.com) with admin password'
+task create_default_user: :environment do
+  if User.find_by(email: 'admin@example.com')
+    print_text 'User already exist'
+  else
+    user = User.create(email: 'admin@example.com', password: 'admin')
+    print_text 'Default User was successfully created!' if user.persisted?
+  end
+  print_text 'Done!'
+end
