@@ -1,0 +1,36 @@
+<div id="<%= dom_id @ticket %>">
+  <p>
+    <strong>Subject:</strong>
+    <%= @ticket.subject %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @ticket.email %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= @ticket.decorate.status_name %>
+  </p>
+
+  <% if @ticket.content.present? %>
+    <p>
+      <strong>Content:</strong>
+      <%= @ticket.content %>
+    </p>
+  <% end %>
+
+  <p>
+    <strong>Created at:</strong>
+    <%= @ticket.created_at %>
+  </p>
+</div>
+
+<div>
+  <%= link_to "Back to list of requests", admin_path %>
+
+  <%= button_to "Destroy", admin_customer_request_url(@ticket), method: :delete %>
+</div>
+
+<%= render 'log_out' %>

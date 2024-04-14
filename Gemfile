@@ -3,6 +3,7 @@
 ruby '3.2.2'
 source 'https://rubygems.org'
 gem 'annotate'
+gem 'bcrypt', '~> 3.1.7'
 gem 'byebug'
 gem 'draper'
 gem 'pg'
@@ -11,5 +12,7 @@ gem 'rails', '7.1.3.2'
 gem 'rubocop'
 
 group :development, :test do
+  gem 'capybara'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end

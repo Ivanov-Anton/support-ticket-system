@@ -3,3 +3,9 @@
 /tmp/*
 !/tmp/.keep
 .byebug_history
+.idea/
+
+# Tmp csv files
+customer_requests_development.csv
+customer_requests_production.csv
+customer_requests_test.csv
