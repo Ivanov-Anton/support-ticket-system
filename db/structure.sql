@@ -217,6 +217,13 @@ CREATE INDEX index_comments_on_ticket_id ON public.comments USING btree (ticket_
 
 
 --
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
 -- Name: comments fk_rails_e013b60ecb; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -231,6 +238,7 @@ ALTER TABLE ONLY public.comments
 SET search_path TO public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240414205906'),
 ('20240414203456'),
 ('20240414172405'),
 ('20240412121112'),
