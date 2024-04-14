@@ -43,4 +43,17 @@ RSpec.describe Ticket do
       end
     end
   end
+
+  describe 'destroy!' do
+    subject { ticket.destroy! }
+
+    let!(:ticket) { Ticket.create!(email: 'customer@gmail.com', name: 'n', subject: 's') }
+    let!(:comment) { Comment.create!(email: ticket.email, content: 'c', ticket:) }
+
+    it 'should destroy! Ticket and all dependent records' do
+      expect { subject }.to change(described_class, :count)
+        .by(-1)
+        .and change(Comment, :count).by(-1)
+    end
+  end
 end

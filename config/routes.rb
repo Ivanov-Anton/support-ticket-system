@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[create new]
   delete :sessions, to: 'sessions#destroy'
   root 'customer_requests#new'
+
+  resources :admin_comments, only: %i[create new destroy]
 end

@@ -2,7 +2,7 @@
 
 class SessionsController < ApplicationController # :nodoc:
   def new
-    if User.find_by(id: cookies.encrypted[:current_user])
+    if User.find_by(email: cookies.encrypted[:current_user])
       flash[:notice] = 'Session already created!'
       redirect_to admin_path
     end
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController # :nodoc:
 
   def setup_cookies
     cookies.encrypted[:current_user] = {
-      value: @session.id,
+      value: @session.email,
       expires: 1.hour,
       secure: true,
       httponly: true,

@@ -1,1 +1,6 @@
-<%= button_to "Log Out", sessions_path, method: :delete, class: 'rounded bg-blue-500 text-white hover:bg-blue-700 py-2 px-5 mb-4 fixed', style: 'top:10px;right:10px' %>
+
+<div class="fixed flex" style="top:10px;right:10px;align-items:flex-start">
+  <%= gravatar_tag cookies.encrypted[:current_user], :size => 40 %>
+  <%= button_to "Log Out", sessions_path, method: :delete, class: ' rounded bg-blue-500 text-white hover:bg-blue-700 py-2 px-5 mb-4', style: "margin-left:10px" %>
+
+</div>
