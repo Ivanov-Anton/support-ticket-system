@@ -40,6 +40,7 @@ class Ticket < ActiveRecord::Base
     freeze
   end
 
+  has_many :comments, dependent: :destroy
   validates :name, :email, :subject, presence: true
   validates :status_id, inclusion: { in: Ticket::CONST::STATUS_IDS }
   validates :email, format: { with: CONST::VALID_EMAIL_REGEX, allow_blank: true }
