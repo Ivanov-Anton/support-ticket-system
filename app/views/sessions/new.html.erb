@@ -1,33 +1,31 @@
-<div style="color: red;display: flex; justify-content: center">
-  <p style="color: red" class="flash"><%= flash[:error] %></p>
-  <p style="color: green" class="flash"><%= flash[:notice] %></p>
+<div>
+  <p class="text-red-600 flash"><%= flash[:error] %></p>
+  <p class="text-green-700 flash"><%= flash[:notice] %></p>
 </div>
 
 
-<%= form_with(model: @session, url: sessions_path, method: :post) do |form| %>
+<%= form_with(model: @session, url: sessions_path, method: :post, class: "w-full max-w-lg flex flex-col") do |form| %>
   <% if @session.errors.any? %>
-    <div style="color: red;display: flex; justify-content: center">
+    <div>
       <ul>
         <% @session.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="text-red-600 mb-10"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div style="display: flex; align-items: center; flex-direction: column;">
-    <div>
-      <%= form.label :email %>
-      <%= form.select :email, User.pluck(:email) %>
-    </div>
-    <br>
-    <div>
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-    <br>
-    <div>
-      <%= form.submit 'Sign in' %>
-    </div>
+  <div class="mb-4">
+    <%= form.label :email, class: 'block text-gray-300 text-sm font-bold mb-2' %>
+    <%= form.select :email, User.pluck(:email) %>
+  </div>
+  <br>
+  <div class="mb-4">
+    <%= form.label :password, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.password_field :password, class: "rounded w-full bg-gray-800 text-white" %>
+  </div>
+  <br>
+  <div class="mb-4">
+    <%= form.submit 'Sign in', class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5' %>
   </div>
 <% end %>

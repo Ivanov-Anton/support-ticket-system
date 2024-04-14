@@ -1,10 +1,9 @@
-<h1>New request</h1>
 
-<%= form_with(model: @ticket, url: customer_requests_path) do |form| %>
+<h1 class="text-3xl font-bold text-left mb-10 text-white">New request</h1>
+<%= form_with(model: @ticket, url: customer_requests_path, class: "w-full max-w-lg") do |form| %>
   <% if @ticket.errors.any? %>
-    <div style="color: red">
+    <div class="text-red-500 mb-10">
       <h2>There is <%= pluralize(@ticket.errors.count, "error") %> occurred:</h2>
-
       <ul>
         <% @ticket.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -13,27 +12,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :subject, style: "display: block" %>
-    <%= form.text_field :subject %>
+  <div class="mb-4">
+    <%= form.label :subject, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.text_field :subject, class: "rounded w-full bg-gray-800 text-white" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.text_field :name, class: "rounded w-full bg-gray-800 text-white" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :email, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.email_field :email, class: "rounded w-full bg-gray-800 text-white" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :content, class: "block text-gray-300 text-sm font-bold mb-2" %>
+    <%= form.text_area :content, rows: "10", class: "rounded w-full bg-gray-800 text-white " %>
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content, rows: "10" %>
-  </div>
-
-  <div>
-    <%= form.submit 'Create' %>
+    <%= form.submit 'Create', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 w-full rounded" %>
   </div>
 <% end %>

@@ -1,35 +1,38 @@
 <p style="color: green" class="flesh"><%= notice %></p>
 
-<h1>Customer requests</h1>
+<h1 class="text-3xl font-bold text-left mb-10 text-white">Customer requests</h1>
 
-<div>
+<table class="table-auto hover:table-fixed text-gray-300 rounded border">
+  <thead>
+    <tr class="border">
+      <th>email</th>
+      <th>subject</th>
+      <th>status</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
   <% @tickets.each do |ticket| %>
-    <div class="customer_request" id="<%= dom_id ticket %>">
-      <p>
-        <strong>Subject:</strong>
-        <%= ticket.subject %>
-      </p>
-
-      <p>
-        <strong>Email:</strong>
+    <tr class="customer_request border" id="<%= dom_id ticket %>">
+      <td class="py-10 px-10">
         <%= ticket.email %>
-      </p>
+      </td>
 
-      <p>
-        <strong>Status:</strong>
+      <td>
+        <%= ticket.subject %>
+      </td>
+
+      <td>
         <%= ticket.decorate.status_name %>
-      </p>
+      </td>
 
-      <p>
-        <strong>Created at:</strong>
-        <%= ticket.created_at %>
-      </p>
-    </div>
-
-    <p>
-      <%= link_to "Show this request", admin_customer_request_url(ticket) %>
-    </p>
+      <td>
+        <%= link_to "Show this request", admin_customer_request_url(ticket), class: 'rounded bg-blue-500 text-white hover:bg-blue-700 py-2 px-5' %>
+      </td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <%= render 'log_out' %>

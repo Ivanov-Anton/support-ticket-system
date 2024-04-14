@@ -9,3 +9,7 @@
 customer_requests_development.csv
 customer_requests_production.csv
 customer_requests_test.csv
+
+# Ignore the builds directory
+/app/assets/builds/*
+!/app/assets/builds/.keep
