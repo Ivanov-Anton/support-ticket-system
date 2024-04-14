@@ -1,4 +1,9 @@
-<div id="<%= dom_id @ticket %>">
+<div class="mb-4">
+  <p class="text-red-600 flash"><%= flash[:error] %></p>
+  <p class="text-green-700 flash"><%= flash[:notice] %></p>
+</div>
+
+<div id="<%= dom_id @ticket %>" class="text-gray-300">
   <p>
     <strong>Subject:</strong>
     <%= @ticket.subject %>
@@ -31,6 +36,7 @@
   <%= link_to "Back to list of requests", admin_path %>
 
   <%= button_to "Destroy", admin_customer_request_url(@ticket), method: :delete %>
+  <%= button_to "Move to #{@ticket.decorate.next_status_name} status", admin_customer_request_path(@ticket), method: :patch, params: { customer_request: { status_id: @ticket.decorate.next_status_id } }, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5' %>
 </div>
 
 <%= render 'log_out' %>
