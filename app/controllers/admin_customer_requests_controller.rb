@@ -2,17 +2,15 @@
 
 class AdminCustomerRequestsController < ApplicationController # :nodoc:
   before_action :authenticate!
+  before_action :init_ticket_instance, only: %i[show destroy update]
 
   def index
     @tickets = Ticket.all
   end
 
-  def show
-    @ticket = Ticket.find(params[:id])
-  end
+  def show; end
 
   def destroy
-    @ticket = Ticket.find(params[:id])
     @ticket.destroy!
 
     flash[:notice] = 'Customer request was successfully destroyed.'
@@ -21,8 +19,6 @@ class AdminCustomerRequestsController < ApplicationController # :nodoc:
 
   # PATCH /admin_customer_requests/1
   def update
-    @ticket = Ticket.find(params[:id])
-
     if @ticket.update(permitted_params)
       redirect_to admin_customer_request_path(@ticket), notice: 'Customer request was successfully updated.'
     else
@@ -41,5 +37,10 @@ class AdminCustomerRequestsController < ApplicationController # :nodoc:
 
   def permitted_params
     params.require(:customer_request).permit(:status_id)
+  end
+
+  # Use callbacks to share common setup between actions.
+  def init_ticket_instance
+    @ticket = Ticket.find(params[:id])
   end
 end
