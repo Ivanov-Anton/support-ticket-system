@@ -36,7 +36,9 @@
   <%= link_to "Back to list of requests", admin_path, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4 block' %>
 
   <%= button_to "Destroy", admin_customer_request_url(@ticket), method: :delete, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4' %>
-  <%= button_to "Move to #{@ticket.decorate.next_status_name} status", admin_customer_request_path(@ticket), method: :patch, params: { customer_request: { status_id: @ticket.decorate.next_status_id } }, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5' %>
+  <%= button_to "Move to #{@ticket.decorate.next_status_name} status", admin_customer_request_path(@ticket), method: :patch, params: { customer_request: { status_id: @ticket.decorate.next_status_id } }, class: 'rounded bg-blue-500 text-white w-full hover:bg-blue-700 py-2 px-5 mb-4' %>
 </div>
+
+
 
 <%= render 'log_out' %>
