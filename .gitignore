@@ -13,3 +13,8 @@ customer_requests_test.csv
 # Ignore the builds directory
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+
+/config/credentials/development.key
+
+/config/credentials/production.key
