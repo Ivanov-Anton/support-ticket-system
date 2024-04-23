@@ -42,11 +42,9 @@ RSpec.describe 'Customer Request' do
 
   context 'when fill in all fields and submit form' do
     let(:flash_message) { 'Your request was successfully created, and support team will review it within 1 minute.' }
-    let(:csv_content) { CSV.foreach(Ticket::ImportFromCsv::CONST::CSV_FILE_NAME).map { |i| i } }
 
     before do
       Capybara.current_driver = :rack_test
-      FileUtils.rm_f(Ticket::ImportFromCsv::CONST::CSV_FILE_NAME)
       visit '/'
       fill_in 'Subject', with: 'Do not work the SMS Trunk'
       fill_in 'Name', with: 'Fake name'
@@ -54,15 +52,10 @@ RSpec.describe 'Customer Request' do
       fill_in 'Content', with: 'too long content text'
     end
 
-    after { FileUtils.rm_f(Ticket::ImportFromCsv::CONST::CSV_FILE_NAME) }
-
-    it 'should render successfully flash message and produce CSV file' do
-      subject
+    it 'should save changes and render successfully flash message' do
+      expect { subject }.to change(Ticket, :count).by(1)
 
       expect(page).to have_selector class: 'flash', exact_text: flash_message
-      expect(csv_content).to match [
-        ['Fake name', 'john.doe@example.com', 'Do not work the SMS Trunk', 'too long content text', be_present]
-      ]
     end
   end
 end
