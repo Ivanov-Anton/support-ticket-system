@@ -1,0 +1,6 @@
+# This robots.txt file controls the crawling of URLs under https://example.com.
+# All crawlers are disallowed to crawl files in the "includes" directory, such
+# as .css, and .js, but Google needs them for rendering, so Google bots is allowed
+# to crawl them.
+User-agent: *
+Disallow: /
