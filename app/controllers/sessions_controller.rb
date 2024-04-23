@@ -40,7 +40,7 @@ class SessionsController < ApplicationController # :nodoc:
     cookies.encrypted[:current_user] = {
       value: @session.email,
       expires: 1.hour,
-      secure: !(Rails.env.development? || Rails.env.test?),
+      secure: Rails.application.config.force_ssl,
       httponly: true,
       same_site: :strict
     }
