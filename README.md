@@ -13,8 +13,7 @@ Stack
 - delete Customer request
 - leave comments for specific Customer Request (only for admin users)
 
-To create a new Customer request as Customer you can visit the root path and fill in the form
-To import submitted Customer requests from CSV into DB user import_customer_requests_from_csv To manage Customer Requests visit the `/admin` path and use the default (admin@example.com) user with the "admin" password q
+To create a new Customer request as a Customer you can visit the root path and fill in the form. To manage Customer requests visit the `/admin` path and use the default (admin@example.com) user with the "admin" password.
 
 # Running application locally
 
