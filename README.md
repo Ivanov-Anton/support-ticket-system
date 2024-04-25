@@ -7,6 +7,7 @@ Stack
 - JQuery
 - PostgreSQL
 - Ruby on Rails
+- [Selenium web driver](https://github.com/SeleniumHQ/selenium)
 
 ### List of supported features
 - create Customer request
