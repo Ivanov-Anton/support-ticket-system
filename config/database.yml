@@ -17,6 +17,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 3
-  port: 5412
+  port: 5432
   schema_search_path: 'public'
   database: support-ticker-system-production
